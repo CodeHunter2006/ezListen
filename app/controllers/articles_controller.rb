@@ -4,7 +4,19 @@ class ArticlesController < ApplicationController
   # GET /articles
   # GET /articles.json
   def index
-    @articles = Article.all
+		if params[:process] == "true"
+			@article = Article.find_by(status: "")
+			if @article
+				redirect_to action: "edit", id: @article.id, format: params[:format]
+			else
+				respond_to do |format|
+					format.html { render :no_more_articles }
+					format.json { render json: "no more articles" }
+				end
+			end
+		else
+			@articles = Article.all
+		end
   end
 
   # GET /articles/1
@@ -19,6 +31,10 @@ class ArticlesController < ApplicationController
 
   # GET /articles/1/edit
   def edit
+		respond_to do |format|
+			format.html
+			format.json { render json: @article.to_json }
+		end
   end
 
   # POST /articles

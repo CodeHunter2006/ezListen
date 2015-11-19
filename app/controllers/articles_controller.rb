@@ -1,5 +1,6 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :edit, :update, :destroy]
+	skip_before_action :verify_authenticity_token, if: :json_request?, only: [:update]
 
   # GET /articles
   # GET /articles.json
@@ -33,7 +34,7 @@ class ArticlesController < ApplicationController
   def edit
 		respond_to do |format|
 			format.html
-			format.json { render json: @article.to_json }
+			format.json { render json: @article }
 		end
   end
 
@@ -87,4 +88,8 @@ class ArticlesController < ApplicationController
     def article_params
       params.require(:article).permit(:source_url, :title, :text_content, :status)
     end
+
+		def json_request?
+			request.format.json?
+		end
 end

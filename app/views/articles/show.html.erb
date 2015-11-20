@@ -16,6 +16,14 @@
 </p>
 
 <p>
+  <strong>Audio file url:</strong>
+  <%= @article.audio_file_url %>
+</p>
+<% if (!@article.audio_file_url.nil? && !@article.audio_file_url.empty?) %>
+	<audio src="<%= @article.audio_file_url %>" controls="controls">
+	</audio>
+<% end %>
+<p>
   <strong>Status:</strong>
   <%= @article.status %>
 </p>

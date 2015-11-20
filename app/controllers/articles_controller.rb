@@ -6,7 +6,11 @@ class ArticlesController < ApplicationController
   # GET /articles.json
   def index
 		if params[:process] == "true"
-			@article = Article.find_by(status: "")
+			@article = Article.find_by(status: nil)
+			if not @article
+				@article = Article.find_by(status: "")
+			end
+
 			if @article
 				redirect_to action: "edit", id: @article.id, format: params[:format]
 			else
@@ -86,7 +90,7 @@ class ArticlesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def article_params
-      params.require(:article).permit(:source_url, :title, :text_content, :status)
+      params.require(:article).permit(:source_url, :title, :text_content, :audio_file_url, :status)
     end
 
 		def json_request?

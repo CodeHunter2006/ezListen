@@ -17,10 +17,14 @@
   <tbody>
     <% @articles.each do |article| %>
       <tr>
-        <td><%= article.source_url %></td>
+				<td><%= "#{article.source_url[0, 5]}..#{article.source_url[-5, 5]}" %></td>
         <td><%= article.title %></td>
-        <td><%= article.text_content %></td>
-        <td><%= article.audio_file_url %></td>
+        <td><%#= article.text_content %></td>
+				<% if article.audio_file_url %>
+					<td><%= "..#{article.audio_file_url[-5, 5]}" %></td>
+				<% else %>
+					<td><%= " " %></td>
+				<% end %>
         <td><%= article.status %></td>
         <td><%= link_to 'Show', article %></td>
         <td><%= link_to 'Edit', edit_article_path(article) %></td>

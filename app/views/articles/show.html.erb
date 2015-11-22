@@ -10,6 +10,11 @@
   <%= @article.title %>
 </p>
 
+<% if (!@article.local_audio_url.nil? && !@article.local_audio_url.empty?) %>
+	<audio src="<%= @article.local_audio_url %>" controls="controls">
+	</audio>
+<% end %>
+
 <p>
   <strong>Text content:</strong>
   <%= @article.text_content %>
@@ -17,12 +22,9 @@
 
 <p>
   <strong>Audio file url:</strong>
+  <%= link_to "Download file", @article.local_audio_url %>
   <%= @article.audio_file_url %>
 </p>
-<% if (!@article.audio_file_url.nil? && !@article.audio_file_url.empty?) %>
-	<audio src="<%= @article.audio_file_url %>" controls="controls">
-	</audio>
-<% end %>
 <p>
   <strong>Status:</strong>
   <%= @article.status %>

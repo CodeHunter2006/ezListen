@@ -37,6 +37,8 @@ gem 'bootstrap-will_paginate', '0.0.9'
 # Use Unicorn as the app server
 gem 'unicorn', '4.9.0'
 
+gem 'carrierwave'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

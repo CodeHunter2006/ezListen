@@ -45,6 +45,11 @@ class ArticlesController < ApplicationController
   # POST /articles
   # POST /articles.json
   def create
+		# delete expire article
+		if Article.count > 20
+			Article.order(:created_at).first.destroy
+		end
+
     @article = Article.new(article_params)
 
     respond_to do |format|
@@ -90,7 +95,7 @@ class ArticlesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def article_params
-      params.require(:article).permit(:source_url, :title, :text_content, :audio_file_url, :status)
+      params.require(:article).permit(:source_url, :title, :text_content, :local_audio, :audio_file_url, :status)
     end
 
 		def json_request?

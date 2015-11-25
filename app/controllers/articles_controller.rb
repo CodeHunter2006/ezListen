@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :edit, :update, :destroy]
-	skip_before_action :verify_authenticity_token, if: :json_request?, only: [:update]
+	skip_before_action :verify_authenticity_token, if: :json_request?, only: [:update, :new, :create]
 
   # GET /articles
   # GET /articles.json
@@ -20,7 +20,7 @@ class ArticlesController < ApplicationController
 				end
 			end
 		else
-			@articles = Article.all
+			@articles = Article.order(created_at: :desc).all
 		end
   end
 
@@ -32,6 +32,10 @@ class ArticlesController < ApplicationController
   # GET /articles/new
   def new
     @article = Article.new
+		respond_to do |format|
+			format.html
+			format.json { render json: @article }
+		end
   end
 
   # GET /articles/1/edit

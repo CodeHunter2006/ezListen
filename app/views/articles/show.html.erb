@@ -10,14 +10,14 @@
   <%= @article.title %>
 </p>
 
-<% if (!@article.local_audio_url.nil? && !@article.local_audio_url.empty?) %>
+<% if (!@article.local_audio_url.nil? && !@article.local_audio_url.blank?) %>
 	<audio src="<%= @article.local_audio_url %>" controls="controls" autoplay="autoplay">
 	</audio>
 <% end %>
 
 <p>
   <strong>Text content:</strong>
-  <%= @article.text_content %>
+  <%= raw @article.text_content %>
 </p>
 
 <p>
@@ -29,6 +29,10 @@
   <strong>Status:</strong>
   <%= @article.status %>
 </p>
-
+<% if(!@article.sentence_time.nil? && !@article.sentence_time.blank?) %>
+	<script type="text/javascript">
+		sentenceTimeArray = new Array(<%= @article.sentence_time %>)
+	</script>
+<% end %>
 <%= link_to 'Edit', edit_article_path(@article) %> |
 <%= link_to 'Back', articles_path %>

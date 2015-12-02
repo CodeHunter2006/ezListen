@@ -3,7 +3,7 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $(document).ready((x)->
-	$("strong[data-sen-time]").mousedown (e)->
+	$("strong[data-sen-time]").click (e)->
 		console.log("sentence "+$(this).data("sen-time")+" onclick")
 		audioDom = $("audio")[0]
 		audioDom.pause()

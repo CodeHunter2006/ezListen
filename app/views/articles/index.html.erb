@@ -9,11 +9,9 @@
   <thead>
     <tr>
       <th>Source url</th>
-      <th>Title</th>
-      <th>Text content</th>
-      <th>Audio file url</th>
+      <th colspan="1">Title</th>
       <th>Status</th>
-      <th colspan="3"></th>
+      <th colspan="5"></th>
     </tr>
   </thead>
 
@@ -22,12 +20,6 @@
       <tr>
 				<td><%= "#{article.source_url[0, 5]}..#{article.source_url[-5, 5]}" %></td>
         <td><%= article.title %></td>
-        <td><%#= article.text_content %></td>
-				<% if article.audio_file_url %>
-					<td><%= "..#{article.audio_file_url[-5, 5]}" %></td>
-				<% else %>
-					<td><%= " " %></td>
-				<% end %>
         <td><%= article.status %></td>
         <td><%= link_to 'Show', article %></td>
         <td><%= link_to 'Edit', edit_article_path(article) %></td>

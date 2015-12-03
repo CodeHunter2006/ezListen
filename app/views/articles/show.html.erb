@@ -11,7 +11,7 @@
 </p>
 
 <% if (!@article.local_audio_url.nil? && !@article.local_audio_url.blank?) %>
-	<audio src="<%= @article.local_audio_url %>" controls="controls" autoplay="autoplay">
+	<audio src="<%= @article.local_audio_url %>" controls="controls" >
 	</audio>
 <% end %>
 

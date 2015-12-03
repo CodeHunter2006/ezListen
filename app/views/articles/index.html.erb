@@ -5,25 +5,24 @@
 <%= link_to 'New Article', new_article_path %>
 <br>
 
-<table>
+<table class="table table-striped">
   <thead>
     <tr>
       <th>Source url</th>
-      <th colspan="1">Title</th>
+      <th>Title</th>
       <th>Status</th>
-      <th colspan="5"></th>
+      <th>Operation</th>
     </tr>
   </thead>
-
   <tbody>
     <% @articles.each do |article| %>
       <tr>
 				<td><%= "#{article.source_url[0, 5]}..#{article.source_url[-5, 5]}" %></td>
         <td><%= article.title %></td>
         <td><%= article.status %></td>
-        <td><%= link_to 'Show', article %></td>
-        <td><%= link_to 'Edit', edit_article_path(article) %></td>
-        <td><%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', article %>
+        <%= link_to 'Edit', edit_article_path(article) %>
+        <%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

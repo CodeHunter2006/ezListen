@@ -1,13 +1,12 @@
 # Place all the behaviors and hooks related to the matching controller here.
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
-
+curPageQ = (sele) ->
+	$("div.ui-page-active "+sele)
 $(document).on("pagechange", (e,u)->
 	if $(u.toPage).attr("id").toString() == "articles-show"
-		$("audio").on("canplay", ->
-			console.log("canplay")
-			$("audio")[0].play()
-		)
+		console.log("canplay")
+		curPageQ("audio")[0].play()
 	console.log("page change")
 )
 $(document).on("pagecreate", (e)->
@@ -16,20 +15,20 @@ $(document).on("pagecreate", (e)->
 		lastAudioPosition = -1
 		setAudioPosition = (time)->
 			if lastAudioPosition != time
-				$("strong[data-sen-time='"+time.toString()+"']").css("color", "red")
-				$("strong[data-sen-time='"+lastAudioPosition.toString()+"']").css("color", "black")
+				curPageQ("strong[data-sen-time='"+time.toString()+"']").css("color", "red")
+				curPageQ("strong[data-sen-time='"+lastAudioPosition.toString()+"']").css("color", "black")
 				lastAudioPosition = time
 		$("strong[data-sen-time]").on("tap", (e)->
 			console.log("sentence "+$(this).data("sen-time").toString()+" onclick")
-			audioDom = $("audio")[0]
+			audioDom = curPageQ("audio")[0]
 			audioDom.pause()
 			audioDom.currentTime = $(this).data("sen-time")/1000
 			audioDom.play()
 			setAudioPosition $(this).data("sen-time")
 		)
-		lastRefreshIndex = -1
+		lastRefreshIndex = 0
 		refreshAudioPosition = ->
-			curPosition = $("audio")[0].currentTime*1000
+			curPosition = curPageQ("audio")[0].currentTime*1000
 			#console.log("audio position"+curPosition.toString())
 			lastRefreshIndex = index for index in [0..sentenceTimeArray.length - 2] when sentenceTimeArray[index] <= curPosition && sentenceTimeArray[index + 1] > curPosition
 			lastRefreshIndex = sentenceTimeArray.length - 1 if lastRefreshIndex >= sentenceTimeArray.length - 2 && sentenceTimeArray[lastRefreshIndex + 1] < curPosition 

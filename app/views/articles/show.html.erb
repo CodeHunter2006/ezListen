@@ -11,7 +11,7 @@
 </p>
 
 <% if (!@article.local_audio_url.nil? && !@article.local_audio_url.blank?) %>
-	<audio src="<%= @article.local_audio_url %>" controls="controls" >
+	<audio class="article_audio" src="<%= @article.local_audio_url %>" controls="controls" >
 	</audio>
 <% end %>
 
@@ -31,7 +31,7 @@
 </p>
 <% if(!@article.sentence_time.nil? && !@article.sentence_time.blank?) %>
 	<script type="text/javascript">
-		sentenceTimeArray = new Array(<%= @article.sentence_time %>)
+		sentenceTimeArray = [<%= @article.sentence_time %>]
 	</script>
 <% end %>
 <%= link_to 'Edit', edit_article_path(@article) %> |

@@ -2,6 +2,9 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
+$(document).on("pagecreate", (e,u)->
+	console.log("page create outside")
+)
 $(document).ready((x)->
 	console.log("ready")
 	lastAudioPosition = -1
@@ -22,7 +25,8 @@ $(document).ready((x)->
 	refreshAudioPosition = ->
 		curPosition = $("audio")[0].currentTime*1000
 		#console.log("audio position"+curPosition.toString())
-		lastRefreshIndex = index for index in [0..sentenceTimeArray.length - 1] when sentenceTimeArray[index] <= curPosition && sentenceTimeArray[index + 1] > curPosition
+		lastRefreshIndex = index for index in [0..sentenceTimeArray.length - 2] when sentenceTimeArray[index] <= curPosition && sentenceTimeArray[index + 1] > curPosition
+		lastRefreshIndex = sentenceTimeArray.length - 1 if lastRefreshIndex >= sentenceTimeArray.length - 2 && sentenceTimeArray[lastRefreshIndex + 1] < curPosition 
 		setAudioPosition sentenceTimeArray[lastRefreshIndex]
 	refreshTimerId = null
 	$("audio").on("play", ->
@@ -34,8 +38,19 @@ $(document).ready((x)->
 		clearInterval(refreshTimerId)
 		refreshTimerId = null
 	)
+	$(document).on("pagechange", (e,u)->
+		if $(u.toPage).attr("id").toString() == "articles-show"
+			$("audio")[0].play()
+		console.log("page change")
+	)
+	$(document).on("pagecreate", (e,u)->
+		console.log("page create")
+	)
 	$(document).on("pagecontainerremove", (e,u)->
 		console.log("page remove")
+	)
+	$(document).on("pagecontainerload", (e,u)->
+		console.log("page load")
 	)
 	$(document).on("pagecontainerbeforehide", (e,u)->
 		if $(u.prevPage).attr("id").toString() == "articles-show"

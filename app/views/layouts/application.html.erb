@@ -12,17 +12,8 @@
 	<%= favicon_link_tag "favicon.ico", rel:"icon" %>
 	<title>EzListen</title>
 </head>
-<body>
-	<div data-role="page" id="<%=params[:controller]+"-"+params[:action]%>">
-		<div data-role="header">
-			<h1><%= yield :heading %></h1>
-		</div>
-		<div data-role="content">
-			<%= yield %>
-		</div>
-		<div data-role="footer">
-			<h1><%= debug(params) if Rails.env.development? %></h1>
-		</div>
-	</div>
+<body id="<%=params[:controller]+"-"+params[:action]%>">
+	<%= yield %>
+	<h1><%= debug(params) if Rails.env.development? %></h1>
 </body>
 </html>

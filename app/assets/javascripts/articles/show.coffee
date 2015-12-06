@@ -3,7 +3,7 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 # for websocket
 @App = {}
-App.cable = Cable.createConsumer 'ws://127.0.0.1:28080'
+App.cable = Cable.createConsumer('ws://' + window.location.hostname + ':28080')
 readyFunc = -> 
 	console.log("articles-show readyFunc")
 	if $("#articles-show").length

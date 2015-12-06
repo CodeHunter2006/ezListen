@@ -11,7 +11,7 @@ gem 'bootstrap-sass','2.3.0.0'
 gem "sass-rails", "~> 4.0.2"
 
 # websocket
-gem 'actioncable', github: 'rails/actioncable'
+gem 'actioncable', github: 'rails/actioncable', ref: '6143352f8ffba303f0c7644be7573f6725554cb3'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'

@@ -14,4 +14,6 @@
 //= require jquery_ujs
 //= require jquery.tap
 //= require turbolinks
+//= require cable
+//= require_self
 //= require_tree .

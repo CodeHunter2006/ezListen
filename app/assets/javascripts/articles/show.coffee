@@ -1,6 +1,9 @@
 # Place all the behaviors and hooks related to the matching controller here.
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
+# for websocket
+@App = {}
+App.cable = Cable.createConsumer 'ws://127.0.0.1:28080'
 readyFunc = -> 
 	console.log("articles-show readyFunc")
 	if $("#articles-show").length
@@ -37,6 +40,10 @@ readyFunc = ->
 			refreshTimerId = null
 		)
 		$("audio")[0].play()
+	# for websocket
+	App.messages = App.cable.subscriptions.create 'MessagesChannel',
+		received: (data) ->
+			console.log("websocket received: "+data)
 
 $(document).on('page:load', (x, y, z)->
 	console.log("articles-show page:load")

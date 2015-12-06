@@ -26,7 +26,7 @@
   <%= @article.audio_file_url %>
 </p>
 <p>
-  <strong>Status:</strong>
+  <strong id="status">Status:</strong>
   <%= @article.status %>
 </p>
 <% if(!@article.sentence_time.nil? && !@article.sentence_time.blank?) %>

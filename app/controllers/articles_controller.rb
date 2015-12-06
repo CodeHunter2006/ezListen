@@ -72,6 +72,10 @@ class ArticlesController < ApplicationController
   def update
     respond_to do |format|
       if @article.update(article_params)
+				if params[:article][:status] == "Finished"
+					ActionCable.server.broadcast 'messages',
+						id: @article.id
+				end
         format.html { redirect_to @article, notice: 'Article was successfully updated.' }
         format.json { render :show, status: :ok, location: @article }
       else

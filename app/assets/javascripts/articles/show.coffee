@@ -37,7 +37,8 @@ readyFunc = ->
 			clearInterval(refreshTimerId)
 			refreshTimerId = null
 		)
-		$("audio")[0].play()
+		if $("audio").length
+			$("audio")[0].play()
 	# for websocket
 	App.messages = App.cable.subscriptions.create 'MessagesChannel',
 		received: (data) ->

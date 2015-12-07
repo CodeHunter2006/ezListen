@@ -2,8 +2,6 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 # for websocket
-@App = {}
-App.cable = Cable.createConsumer('ws://' + window.location.hostname + ':28080')
 readyFunc = -> 
 	console.log("articles-show readyFunc")
 	if $("#articles-show").length
@@ -43,13 +41,8 @@ readyFunc = ->
 	# for websocket
 	App.messages = App.cable.subscriptions.create 'MessagesChannel',
 		received: (data) ->
-			console.log("websocket received: "+data)
-
-$(document).on('page:load', (x, y, z)->
-	console.log("articles-show page:load")
-	readyFunc()
-)
-$(document).ready(->
-	console.log("articles-show ready")
-	readyFunc()
-)
+			console.log("websocket received: "+data.id.toString())
+			if ($("#status").data("target-id") == data.id && $("#status").text() != "Finished")
+				console.log("refresh")
+				location.reload(true)
+setReadyCallback(readyFunc)

@@ -26,8 +26,8 @@
   <%= @article.audio_file_url %>
 </p>
 <p>
-  <strong id="status">Status:</strong>
-  <%= @article.status %>
+  <strong>Status:</strong>
+	<strong id="status" data-target-id=<%=@article.id%>><%= @article.status %></strong>
 </p>
 <% if(!@article.sentence_time.nil? && !@article.sentence_time.blank?) %>
 	<script type="text/javascript">

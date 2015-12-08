@@ -13,6 +13,12 @@
 <% if (!@article.local_audio_url.nil? && !@article.local_audio_url.blank?) %>
 	<audio class="article_audio" src="<%= @article.local_audio_url %>" controls="controls" >
 	</audio>
+<% else %>
+	<div class="spinner">
+		<div class="bounce1"></div>
+		<div class="bounce2"></div>
+		<div class="bounce3"></div>
+	</div>
 <% end %>
 
 <p>

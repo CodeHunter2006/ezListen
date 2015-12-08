@@ -5,9 +5,15 @@ readyFunc = ->
 	console.log("articles-index readyFunc")
 	if $("#articles-index").length
 		console.log("articles-index initial")
-		App.messages = App.cable.subscriptions.create 'MessagesChannel',
-			received: (data) ->
+		refreshPageCallback = (data) ->
+			setTimeout( ->
 				console.log("websocket received: "+data.id.toString())
 				console.log("refresh")
 				location.reload(true)
+			, 300
+			)
+		App.messages = App.cable.subscriptions.create 'MessagesChannel',
+			received: refreshPageCallback
+		App.messages = App.cable.subscriptions.create 'NewArticleChannel',
+			received: refreshPageCallback
 setReadyCallback(readyFunc)

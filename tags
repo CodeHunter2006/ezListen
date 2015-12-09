@@ -1,0 +1,47 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+$.event.special.remove	.\app\assets\javascripts\jquery.tap.js	/^    remove: function() {$/;"	m
+$.event.special.setup	.\app\assets\javascripts\jquery.tap.js	/^    setup: function() {$/;"	m
+$.fn	.\app\assets\javascripts\jquery.tap.js	/^  $.fn[_] = function(fn) {$/;"	f
+ActiveSupport	.\test\test_helper.rb	/^class ActiveSupport::TestCase$/;"	c
+AddAudioFileUrlToArticles	.\db\migrate\20151120081154_add_audio_file_url_to_articles.rb	/^class AddAudioFileUrlToArticles < ActiveRecord::Migration$/;"	c
+AddLocalAudioToArticles	.\db\migrate\20151121122016_add_local_audio_to_articles.rb	/^class AddLocalAudioToArticles < ActiveRecord::Migration$/;"	c
+AddSentenceTimeToArticles	.\db\migrate\20151130112312_add_sentence_time_to_articles.rb	/^class AddSentenceTimeToArticles < ActiveRecord::Migration$/;"	c
+Application	.\config\application.rb	/^  class Application < Rails::Application$/;"	c	class:EzListen
+ApplicationCable	.\app\channels\application_cable\channel.rb	/^module ApplicationCable$/;"	m
+ApplicationCable	.\app\channels\application_cable\connection.rb	/^module ApplicationCable$/;"	m
+ApplicationController	.\app\controllers\application_controller.rb	/^class ApplicationController < ActionController::Base$/;"	c
+ApplicationHelper	.\app\helpers\application_helper.rb	/^module ApplicationHelper$/;"	m
+Article	.\app\models\article.rb	/^class Article < ActiveRecord::Base$/;"	c
+ArticlesController	.\app\controllers\articles_controller.rb	/^class ArticlesController < ApplicationController$/;"	c
+ArticlesHelper	.\app\helpers\articles_helper.rb	/^module ArticlesHelper$/;"	m
+AudioFileUploader	.\app\uploaders\audio_file_uploader.rb	/^class AudioFileUploader < CarrierWave::Uploader::Base$/;"	c
+Channel	.\app\channels\application_cable\channel.rb	/^  class Channel < ActionCable::Channel::Base$/;"	c	class:ApplicationCable
+Connection	.\app\channels\application_cable\connection.rb	/^  class Connection < ActionCable::Connection::Base$/;"	c	class:ApplicationCable
+CreateArticles	.\db\migrate\20151116124840_create_articles.rb	/^class CreateArticles < ActiveRecord::Migration$/;"	c
+EzListen	.\config\application.rb	/^module EzListen$/;"	m
+MessagesChannel	.\app\channels\messages_channel.rb	/^class MessagesChannel < ApplicationCable::Channel$/;"	c
+NewArticleChannel	.\app\channels\new_article_channel.rb	/^class NewArticleChannel < ApplicationCable::Channel$/;"	c
+article_params	.\app\controllers\articles_controller.rb	/^    def article_params$/;"	f	class:ArticlesController
+change	.\db\migrate\20151116124840_create_articles.rb	/^  def change$/;"	f	class:CreateArticles
+change	.\db\migrate\20151120081154_add_audio_file_url_to_articles.rb	/^  def change$/;"	f	class:AddAudioFileUrlToArticles
+change	.\db\migrate\20151121122016_add_local_audio_to_articles.rb	/^  def change$/;"	f	class:AddLocalAudioToArticles
+change	.\db\migrate\20151130112312_add_sentence_time_to_articles.rb	/^  def change$/;"	f	class:AddSentenceTimeToArticles
+create	.\app\controllers\articles_controller.rb	/^  def create$/;"	f	class:ArticlesController
+destroy	.\app\controllers\articles_controller.rb	/^  def destroy$/;"	f	class:ArticlesController
+edit	.\app\controllers\articles_controller.rb	/^  def edit$/;"	f	class:ArticlesController
+ev.end	.\app\assets\javascripts\jquery.tap.js	/^    end: 'touchend mouseup'$/;"	p
+ev.start	.\app\assets\javascripts\jquery.tap.js	/^    start: 'touchstart mousedown',$/;"	p
+index	.\app\controllers\articles_controller.rb	/^  def index$/;"	f	class:ArticlesController
+json_request?	.\app\controllers\articles_controller.rb	/^		def json_request?$/;"	f	class:ArticlesController
+new	.\app\controllers\articles_controller.rb	/^  def new$/;"	f	class:ArticlesController
+set_article	.\app\controllers\articles_controller.rb	/^    def set_article$/;"	f	class:ArticlesController
+show	.\app\controllers\articles_controller.rb	/^  def show$/;"	f	class:ArticlesController
+store_dir	.\app\uploaders\audio_file_uploader.rb	/^  def store_dir$/;"	f	class:AudioFileUploader
+subscribed	.\app\channels\messages_channel.rb	/^  def subscribed$/;"	f	class:MessagesChannel
+subscribed	.\app\channels\new_article_channel.rb	/^  def subscribed$/;"	f	class:NewArticleChannel
+update	.\app\controllers\articles_controller.rb	/^  def update$/;"	f	class:ArticlesController

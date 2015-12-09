@@ -58,8 +58,7 @@ class ArticlesController < ApplicationController
 
     respond_to do |format|
       if @article.save
-				ActionCable.server.broadcast 'new_article',
-					id: @article.id
+				ActionCable.server.broadcast 'new_article', id: @article.id
         format.html { redirect_to @article, notice: 'Article was successfully created.' }
         format.json { render :show, status: :created, location: @article }
       else

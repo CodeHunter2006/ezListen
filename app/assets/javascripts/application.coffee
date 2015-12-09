@@ -17,9 +17,25 @@
 #= require cable
 #= require_self
 #= require_tree .
-@setReadyCallback = (callback)->
-	$(document).on('page:load', callback)
-	$(document).ready(callback)
+$(document).on('page:change', (data)->
+	console.log("page:change to: " + data.target.body.id)
+	invokePageChange(data.target.body.id)
+)
+$(document).on('page:before-unload', (data)->
+	console.log("page:before-unload: " + data.target.body.id)
+	invokePageUnload(data.target.body.id)
+)
+@initCallbackArray = []
+@setPageCallbacks = (bodyId, init, dispose)->
+	initCallbackArray[bodyId] = {init: init, dispose: dispose}
+@invokePageChange = (bodyId)->
+	tarObj = initCallbackArray[bodyId]
+	if tarObj != undefined && tarObj.init != undefined
+		tarObj.init()
+@invokePageUnload = (bodyId)->
+	tarObj = initCallbackArray[bodyId]
+	if tarObj != undefined && tarObj.dispose != undefined
+		tarObj.dispose()
 @App = {}
 App.cable = Cable.createConsumer('ws://' + window.location.hostname + ':28080')
 

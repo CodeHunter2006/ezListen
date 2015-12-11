@@ -3,10 +3,10 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .article_audio{
-	top: 0px;
-	height: 50px;
-	width: 300px;
-	position: fixed;
-	margin-top: 5px;
 	z-index: 998;
+	top: 2px;
+}
+
+#audio_player_div{
+	height: 34px;
 }

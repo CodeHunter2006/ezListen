@@ -44,6 +44,20 @@ setPageCallbacks "articles-show", ->
 			if ($("#status").data("target-id") == data.id && $("#status").text() != "Finished")
 				console.log("refresh")
 				location.reload(true)
+	# for float audio bar
+	mytooltop = 0
+	scrooltop = 0
+	cloned = false
+	$(window).scroll( ->
+		mytooltop = $("#audio_player_div")[0].offsetTop
+		scrooltop = $("#articles-show")[0].scrollTop
+		if scrooltop >= mytooltop && cloned == false
+			$(".article_audio").css("position","fixed")
+			cloned = true
+		if !(scrooltop >= mytooltop) && cloned == true
+			$(".article_audio").css("position","")
+			cloned = false
+	)
 , ->
 	console.log("articles-show dispose")
 	App.cable.subscriptions.remove App.messages

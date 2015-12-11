@@ -11,8 +11,9 @@
 </p>
 
 <% if (!@article.local_audio_url.nil? && !@article.local_audio_url.blank?) %>
-	<audio class="article_audio" src="<%= @article.local_audio_url %>" controls="controls" >
-	</audio>
+	<div id="audio_player_div">
+		<audio id="audio_player" class="article_audio" src="<%= @article.local_audio_url %>" controls="controls"/>
+	</div>
 <% else %>
 	<div class="spinner">
 		<div class="bounce1"></div>

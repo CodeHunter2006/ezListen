@@ -20,6 +20,7 @@ class ArticlesController < ApplicationController
 				end
 			end
 		else
+			@article = Article.new
 			@articles = Article.order(created_at: :desc).all
 		end
   end

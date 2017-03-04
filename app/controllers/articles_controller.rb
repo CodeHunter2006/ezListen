@@ -51,7 +51,7 @@ class ArticlesController < ApplicationController
   # POST /articles.json
   def create
 		# delete expire article
-		if Article.count > 20
+		if Article.count > 40
 			Article.order(:created_at).first.destroy
 		end
 

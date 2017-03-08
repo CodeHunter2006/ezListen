@@ -35,7 +35,10 @@
     <%= f.label :status %><br>
     <%= f.text_field :status %>
   </div>
-  <div class="actions">
+	<div class="field">
+		<%= f.hidden_field :sticked, value: @article.sticked %>
+	</div>
+	 <div class="actions">
     <%= f.submit %>
   </div>
 <% end %>

@@ -83,7 +83,7 @@ class ArticlesController < ApplicationController
 						id: @article.id
 				end
 
-				if params[:article][:sticked] == stickedPost
+				if params[:article][:sticked] != stickedPost
 					format.html { redirect_to @article, notice: 'Article was successfully updated.' }
 					format.json { render :show, status: :ok, location: @article }
 				else

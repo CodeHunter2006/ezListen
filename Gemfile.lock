@@ -214,7 +214,7 @@ GEM
       coffee-rails
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
-    uglifier (3.1.4)
+    uglifier (3.1.5)
       execjs (>= 0.3.0, < 3)
     unicorn (4.9.0)
       kgio (~> 2.6)
@@ -266,5 +266,8 @@ DEPENDENCIES
   web-console (~> 2.0)
   will_paginate (= 3.0.4)
 
+RUBY VERSION
+   ruby 2.1.10p492
+
 BUNDLED WITH
-   1.11.2
+   1.14.6

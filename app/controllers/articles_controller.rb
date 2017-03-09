@@ -82,8 +82,7 @@ class ArticlesController < ApplicationController
 					ActionCable.server.broadcast 'new_article',
 						id: @article.id
 				end
-
-				if params[:article][:sticked] != stickedPost
+				if (params[:article][:sticked] == "true") == stickedPost
 					format.html { redirect_to @article, notice: 'Article was successfully updated.' }
 					format.json { render :show, status: :ok, location: @article }
 				else

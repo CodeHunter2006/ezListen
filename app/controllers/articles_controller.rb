@@ -76,17 +76,18 @@ class ArticlesController < ApplicationController
     respond_to do |format|
 			stickedPost = @article.sticked
       if @article.update(article_params)
-				if params[:article][:status] == "Finished"
-					ActionCable.server.broadcast 'messages',
-						id: @article.id
-				else
-					ActionCable.server.broadcast 'new_article',
-						id: @article.id
-				end
 				if (params[:article][:sticked] == "true") == stickedPost
+					if params[:article][:status] == "Finished"
+						ActionCable.server.broadcast 'messages',
+							id: @article.id
+					else
+						ActionCable.server.broadcast 'new_article',
+							id: @article.id
+					end
 					format.html { redirect_to @article, notice: 'Article was successfully updated.' }
 					format.json { render :show, status: :ok, location: @article }
 				else
+					format.js	{}
 					format.html { redirect_to articles_url, notice: 'Article stick state was successfully updated.' }
 				end
       else

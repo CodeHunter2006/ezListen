@@ -1,0 +1,9 @@
+<% if @article.sticked == true %>
+	$("#<%=@article.id%> .actions").addClass("sticked_button");
+	$("#<%=@article.id%>").appendTo("#sticked_articles");
+	$("#<%=@article.id%> input[name='article[sticked]']").attr("value","false")
+<% else %>
+	$("#<%=@article.id%> .actions").removeClass("sticked_button");
+	$("#<%=@article.id%>").appendTo("#none_sticked_articles");
+	$("#<%=@article.id%> input[name='article[sticked]']").attr("value","true")
+<% end %>

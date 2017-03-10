@@ -7,7 +7,7 @@
 			<%= link_to 'Show', article %>
 			<%= link_to 'Edit', edit_article_path(article) %>
 			<%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' } %>
-			<%= form_for(article, method: :patch) do |f| %>
+			<%= form_for(article, method: :patch, remote: true) do |f| %>
 				<div class="field">
 					<%= f.hidden_field :source_url, value: article.source_url %>
 					<%= f.hidden_field(:title, value: article.title) %>

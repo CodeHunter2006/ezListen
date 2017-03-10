@@ -15,13 +15,11 @@
       <th>Operation</th>
     </tr>
   </thead>
-  <tbody>
-		<div id="sticked_articles">
-			<%= render partial: 'article_item', locals:{ articles:@stickedArticles } %>
-		</div>
-		<div id="none_sticked_articles">
-			<%= render partial: 'article_item', locals:{ articles:@noneStickedArticles } %>
-		</div>
+  <tbody id="sticked_articles">
+		<%= render partial: 'article_item', locals:{ articles:@stickedArticles } %>
+  </tbody>
+  <tbody id="none_sticked_articles">
+		<%= render partial: 'article_item', locals:{ articles:@noneStickedArticles } %>
   </tbody>
 </table>
 

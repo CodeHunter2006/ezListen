@@ -1,0 +1,36 @@
+<% articles.each do |article| %>
+	<tr id="<%= article.id %>">
+		<td><%= "#{article.source_url[0, 5]}..#{article.source_url[-5, 5]}" %></td>
+		<td><%= link_to article.title, article %></td>
+		<td><%= article.status %></td>
+		<td>
+			<%= link_to 'Show', article %>
+			<%= link_to 'Edit', edit_article_path(article) %>
+			<%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' } %>
+			<%= form_for(article, method: :patch) do |f| %>
+				<div class="field">
+					<%= f.hidden_field :source_url, value: article.source_url %>
+					<%= f.hidden_field(:title, value: article.title) %>
+					<%= f.hidden_field(:text_content, value: article.text_content) %>
+					<%= f.hidden_field(:local_audio, value: article.local_audio) %>
+					<%= f.hidden_field(:audio_file_url, value: article.audio_file_url) %>
+					<%= f.hidden_field(:status, value: article.status) %>
+					<% if article.sticked == true %>
+						<%= f.hidden_field(:sticked, value: false) %>
+					<% else %>
+						<%= f.hidden_field(:sticked, value: true) %>
+					<%end %>
+				</div>
+				<% if article.sticked == true %>
+					<div class="actions sticked_button">
+						<%= submit_tag "取消保留" %>
+					</div>
+				<% else %>
+					<div class="actions">
+						<%= submit_tag "保留不删" %>
+					</div>
+				<%end %>
+			<% end %>
+		</td>
+	</tr>
+<% end %>

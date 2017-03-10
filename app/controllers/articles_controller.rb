@@ -21,7 +21,8 @@ class ArticlesController < ApplicationController
 			end
 		else
 			@article = Article.new
-			@articles = Article.order(created_at: :desc).all
+			@stickedArticles = Article.where(sticked: true).order(created_at: :desc).all
+			@noneStickedArticles = Article.where(sticked: false).order(created_at: :desc).all
 		end
   end
 
